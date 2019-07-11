@@ -6,5 +6,5 @@
 * Start by editing the index.html page to get your "/" route up and running
    * Use bootstrap code to make the content look nice
    * The master.html already uses the latest bootstrap template
-* Based on which database (sqlite3 or MySQL) you want to use, start the server accordingly
+* Depending on which database (sqlite3 or MySQL) you want to use, start the server accordingly
 * Start adding your routes
