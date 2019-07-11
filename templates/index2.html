@@ -1,0 +1,52 @@
+{% extends "master.html" %}
+
+{% block title %}
+Pets
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Add your pets</h3>
+            <form action="/add_pet" method="post">
+                <div class="form-group">
+                    <label>Pet name</label>
+                    <input name="pet_name" type="text" class="form-control" placeholder="Enter pet name">
+                    <small class="form-text text-muted">This is the name you call your pet</small>
+                </div>
+                <div class="form-group">
+                    <label>Type of pet</label>
+                    <select name="pet_type" class="form-control">
+                        {% for animal in all_animals %}
+                            <option value="{{animal['id']}}">{{animal['common_name']}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Add this pet</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pet name</th>
+                <th scope="col">Type of pet</th>
+                </tr>
+            </thead>
+            {% for pet in all_pets %}
+            <tbody>
+                <tr>
+                <th scope="row">{{pet['id']}}</th>
+                <td>{{pet['name']}}</td>
+                <td>{{pet['common_name']}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+
