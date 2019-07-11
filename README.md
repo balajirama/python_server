@@ -9,8 +9,8 @@
    ![Step 2](doc/img/step2.png)
    * GitHub generates the new repo for you
 * Once your new repo has been generated, you can clone that repo to your computer
-* Depending on which database (sqlite3 or MySQL) you want to use, start the server accordingly
-   * Your page is up and running already!
+* Depending on which database you want to use(sqlite3 or MySQL), start the appropriate server
+   * Your page will be up and running at localhost:5000
 * Start by editing the index.html page to edit the content
    * Use bootstrap code to make the content look nice
    * The master.html already uses the latest bootstrap components
