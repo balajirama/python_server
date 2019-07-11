@@ -4,7 +4,9 @@
 # Steps
 * Use the template repository to create your new repo on GitHub directly
    * Click the "Use this template" icon
+   ![Step 1](/docs/img/step1.png)
    * Give you repo a name and description
+   ![Step 2](/docs/img/step2.png)
    * GitHub generates the new repo for you
 * Once your new repo has been generated, you can clone that repo to your computer
 * Depending on which database (sqlite3 or MySQL) you want to use, start the server accordingly
