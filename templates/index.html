@@ -5,9 +5,16 @@
 
 {% block content %}
 <div class="container">
-    {% with messages = get_flashed_messages() %}
-    {% for message in messages %}
+    {% with errors = get_flashed_messages(category_filter=['error']) %}
+    {% for message in errors %}
     <div class="alert alert-danger" role="alert">
+        {% message %}
+    </div>
+    {% endfor %}
+    {% endwith %}
+    {% with successes = get_flashed_messages(category_filter=['success']) %}
+    {% for message in successes %}
+    <div class="alert alert-success" role="alert">
         {% message %}
     </div>
     {% endfor %}
