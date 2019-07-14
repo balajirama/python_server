@@ -4,13 +4,10 @@ from mysqlconnection import connectToMySQL
 from datetime import datetime
 import re
 import os
+import my_utils
 app = Flask(__name__)
 
 app.secret_key = 'darksecret'
-
-EMAIL_REGEX = re.compile(r"^[a-zA-Z0-9._+-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$")
-NUM_REGEX = re.compile(r"^.*[0-9]+.*")
-CAP_REGEX = re.compile(r"^.*[A-Z]+.*")
 
 dbname = 'dbname'
 
