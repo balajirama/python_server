@@ -6,6 +6,7 @@ import re
 import os
 import my_utils
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 app.secret_key = 'darksecret'
 
