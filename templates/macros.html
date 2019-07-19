@@ -41,8 +41,8 @@
     </div>
 {%- endmacro %}
 
-{% macro table(header=[['#', 'id'], ['Data', 'db_col_name']], data=[{'id': 1, 'db_col_name': 'Data for 1', 'more': 'stuff', 'another': 'stuff'}, {'id':2, 'db_col_name':'Data for 2', 'more': 'stuff', 'another':'stuff'}]) -%}
-    <table class="table table-striped">
+{% macro table(table_class='table-striped', header=[['#', 'id'], ['Data', 'db_col_name']], data=[{'id': 1, 'db_col_name': 'Data for 1', 'more': 'stuff', 'another': 'stuff'}, {'id':2, 'db_col_name':'Data for 2', 'more': 'stuff', 'another':'stuff'}]) -%}
+    <table class="table {{table_class}}">
         <thead class="thead-light">
             <tr>
                 {% for colheader in header -%}
