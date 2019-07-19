@@ -24,7 +24,7 @@
     </div>
 {%- endmacro %}
 
-{% macro nice_card(header='Header', title='Title', footer='Footer', img=None, width=None) -%}
+{% macro card(header='Header', title='Title', footer='Footer', img=None, width=None) -%}
     {% if width != None %}
         {% set style_str = "width: " + width + ";" %}
     {% endif %}
@@ -41,7 +41,7 @@
     </div>
 {%- endmacro %}
 
-{% macro nice_table(header=['#', 'First', 'Second', 'Third'], data=[[1, 'First 1', 'Second 1', 'Third 1'], [2, 'First 2', 'Second 2', 'Third 2']]) -%}
+{% macro table(header=['#', 'First', 'Second', 'Third'], data=[[1, 'First 1', 'Second 1', 'Third 1'], [2, 'First 2', 'Second 2', 'Third 2']]) -%}
     <table class="table table-striped">
         <thead class="thead-light">
             <tr>
