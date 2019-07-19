@@ -41,23 +41,24 @@
     </div>
 {%- endmacro %}
 
-{% macro table(header=['#', 'First', 'Second', 'Third'], data=[[1, 'First 1', 'Second 1', 'Third 1'], [2, 'First 2', 'Second 2', 'Third 2']]) -%}
+{% macro table(header=[['#', 'id'], ['Data', 'db_col_name']], data=[{'id': 1, 'db_col_name': 'Data for 1', 'more': 'stuff', 'another': 'stuff'}, {'id':2, 'db_col_name':'Data for 2', 'more': 'stuff', 'another':'stuff'}]) -%}
     <table class="table table-striped">
         <thead class="thead-light">
             <tr>
                 {% for colheader in header -%}
-                <th scope="col">{{colheader}}</th>
+                <th scope="col">{{colheader[0]}}</th>
                 {%- endfor %}
             </tr>
         </thead>
         <tbody>
             {% for row in data -%}
             <tr>
-                {% for i in range(row|length) -%}
+                {% for i in range(header|length) -%}
+                    {% set key = header[i][1] %}
                     {% if i == 0 -%}
-                        <th scope="row">{{row[i]}}</th>
+                        <th scope="row">{{row[key]}}</th>
                     {%- else %}
-                        <td>{{row[i]}}</td>
+                        <td>{{row[key]}}</td>
                     {%- endif %}
                 {%- endfor %}
             </tr>

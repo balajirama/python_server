@@ -47,3 +47,5 @@ def validate_password(fields, categories=['password', 'confirm']):
         flash("Passwords do not match", categories[1])
         is_valid = False
     return is_valid
+
+
