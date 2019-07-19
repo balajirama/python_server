@@ -10,6 +10,23 @@
     {{ macros.showflashes() }}
     {{ macros.showflashes(category=['success'], alert_type='alert-success') }}
 
+    {# This is an example macros call to the nice_card() macro #}
+    {# You can choose to not specify an image or width #}
+    {% call macros.nice_card(header='Card hearder', title='Card title', footer='some footer', img={'src': 'static/img/nothing.png', 'alt': 'nothing'}, width='15rem') -%}
+    Card content
+    {%- endcall %}
+
+    <p></p>
+
+    {% call macros.nice_card() -%}
+    <p>Another card here</p>
+    <a href="/" class="btn btn-primary">Go somewhere</a>
+    {%- endcall %}
+
+    <p></p>
+
+    {# Now we present a nice table #}
+    {{ macros.nice_table(data=[[1, 'Me', '', 'e@me.com'], [2, 'My', 'Husband', 'b@me.com']], header=['#', 'Firstname', 'Lastname', 'Email']) }}
 
 </div>
 {% endblock %}

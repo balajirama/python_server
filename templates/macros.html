@@ -24,3 +24,44 @@
     </div>
 {%- endmacro %}
 
+{% macro nice_card(header='Header', title='Title', footer='Footer', img=None, width=None) -%}
+    {% if width != None %}
+        {% set style_str = "width: " + width + ";" %}
+    {% endif %}
+    <div class="card text-center" style="{{style_str}}">
+        <div class="card-header">{{header}}</div>
+        {% if img != None -%}
+        <img src="{{img['src']}}" class="card-img-top" alt="{{img['alt']}}">
+        {%- endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            {{ caller() }}
+        </div>
+        <div class="card-footer text-muted">{{footer}}</div>
+    </div>
+{%- endmacro %}
+
+{% macro nice_table(header=['#', 'First', 'Second', 'Third'], data=[[1, 'First 1', 'Second 1', 'Third 1'], [2, 'First 2', 'Second 2', 'Third 2']]) -%}
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                {% for colheader in header -%}
+                <th scope="col">{{colheader}}</th>
+                {%- endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data -%}
+            <tr>
+                {% for i in range(row|length) -%}
+                    {% if i == 0 -%}
+                        <th scope="row">{{row[i]}}</th>
+                    {%- else %}
+                        <td>{{row[i]}}</td>
+                    {%- endif %}
+                {%- endfor %}
+            </tr>
+            {%- endfor %}
+        </tbody>
+    </table>
+{%- endmacro %}
