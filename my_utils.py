@@ -7,11 +7,27 @@ NUM_REGEX = re.compile(r"^.*[0-9]+.*")
 CAP_REGEX = re.compile(r"^.*[A-Z]+.*")
 
 def is_age_over(num, dob):
-    dob = datetime.strptime(dob, '%Y-%m-%d')
+    if(type(dob) == type('')):
+        if dob != '':
+            dob = datetime.strptime(dob, '%Y-%m-%d')
+        else:
+            return False
+    elif type(dob) == type(datetime.now()):
+        dob = dob
+    else:
+        return False
     year = dob.year + num
     nth_bday = datetime.strptime(f"{year}-{dob.month}-{dob.day}", "%Y-%m-%d")
     today = datetime.today()
     return (today - nth_bday).days >= 0
+
+def copy_immutable_dict(immutable_dict, **kwargs):
+    result_dict = dict()
+    for item in immutable_dict.keys():
+        result_dict[item] = immutable_dict[item]
+    for param, value in kwargs.items():
+        result_dict[param] = value
+    return result_dict
 
 def get_age(dob):
     age = -1
