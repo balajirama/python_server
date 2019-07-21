@@ -12,9 +12,18 @@
 
     {# This is an example call to the card() macro #}
     {# You can choose to not specify an image or width #}
-    {% call macros.card(header='Card hearder', title='Card title', footer='some footer', img={'src': 'static/img/nothing.png', 'alt': 'nothing'}, width='15rem') -%}
-    Card content
-    {%- endcall %}
+    <div class="row">
+        <div class="col">
+            {% call macros.card(header='Card hearder', title='Card title', footer='some footer', img={'src': 'static/img/nothing.png', 'alt': 'nothing'}, width='15rem') -%}
+            Card content
+            {%- endcall %}
+        </div>
+        <div class="col">
+            {{macros.inputfield(name='firstname', label='First name', placeholder='Jane')}}
+            {{macros.inputfield(name='lastname', label='Last name', placeholder='Doe')}}
+            {{macros.inputfield(name='email', label='Email', placeholder='example@domain.net')}}
+        </div>
+    </div>
 
     <p></p>
 
