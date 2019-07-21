@@ -24,12 +24,12 @@
     </div>
 {%- endmacro %}
 
-{% macro card(header='Header', title='Title', footer='Footer', img=None, width=None) -%}
+{% macro card(header=None, title='Title', footer=None, img=None, width=None, text_align='') -%}
     {% if width != None %}
         {% set style_str = "width: " + width + ";" %}
     {% endif %}
-    <div class="card text-center" style="{{style_str}}">
-        <div class="card-header">{{header}}</div>
+    <div class="card {{text_align}}" style="{{style_str}}">
+        {%if header!=None%}<div class="card-header">{{header}}</div>{%endif%}
         {% if img != None -%}
         <img src="{{img['src']}}" class="card-img-top" alt="{{img['alt']}}">
         {%- endif %}
@@ -37,7 +37,7 @@
             <h5 class="card-title">{{title}}</h5>
             {{ caller() }}
         </div>
-        <div class="card-footer text-muted">{{footer}}</div>
+        {%if footer!=None%}<div class="card-footer text-muted">{{footer}}</div>{%endif%}
     </div>
 {%- endmacro %}
 
@@ -46,7 +46,7 @@
         <thead class="thead-light">
             <tr>
                 {% for colheader in header -%}
-                <th scope="col">{{colheader[0]}}</th>
+                <th scope="col">{{colheader[0]|safe}}</th>
                 {%- endfor %}
             </tr>
         </thead>
@@ -56,9 +56,9 @@
                 {% for i in range(header|length) -%}
                     {% set key = header[i][1] %}
                     {% if i == 0 -%}
-                        <th scope="row">{{row[key]}}</th>
+                        <th scope="row">{{row[key]|safe}}</th>
                     {%- else %}
-                        <td>{{row[key]}}</td>
+                        <td>{{row[key]|safe}}</td>
                     {%- endif %}
                 {%- endfor %}
             </tr>
