@@ -48,4 +48,36 @@ def is_valid_password(request_form, categories=['password', 'confirm']):
         is_valid = False
     return is_valid
 
+import copy
+
+def add_column_to_query_result(list_of_dict, column=None, funcname=None, args=[]):
+    """
+    This function can be used to add a column to a SELECT query result where
+    you use the value in one or more of the existing columns to create a new
+    column. For example:
+
+        add_column_to_quer_result(query_result, column='special', funcname=some_function, args=['col1', 'col2'])
+
+    query_result : a list of dictionaries, typically the result of a SELECT query.
+    column       : Optional argument. If not specified, the function will return query_result as it is
+                   when specified, it this is the name of the column that will be added to the query_result
+    funcname     : Name of the function that will generate the data for that column. This can be any function
+                   user-defined or built-in function. No quotes.
+    args         : This is a list of arguments. If any of the arguments is the name of an existing column in 
+                   query_result, then the value in that column will be used.
+
+    """
+    return_dict = copy.deepcopy(list_of_dict)
+    if column==None or funcname==None:
+        return return_dict
+    for row in return_dict:
+        funcarg = list()
+        for elem in args:
+            if elem in row.keys():
+                funcarg.append(row[elem])
+            else:
+                funcarg.append(elem)
+        row[column] = funcname(funcarg)
+    return return_dict
+
 
