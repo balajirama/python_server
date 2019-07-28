@@ -50,7 +50,7 @@ def is_valid_password(request_form, categories=['password', 'confirm']):
 
 import copy
 
-def add_column_to_query_result(list_of_dict, column=None, funcname=None, args=[]):
+def add_column_to_list_of_dict(list_of_dict, column=None, funcname=None, args=[]):
     """
     This function can be used to add a column to a SELECT query result where
     you use the value in one or more of the existing columns to create a new
